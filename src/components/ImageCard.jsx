@@ -18,7 +18,7 @@ const ImageCard = ({image}) => {
             <i className="ri-download-line"></i>
             &nbsp;{image?.downloads}
           </span>
-          <a href={image?.fullHDURL} download={image?.user + image?.id} className='px-4 py-2 text-white bg-violet-600 rounded'>
+          <a href={image?.pageURL} download target='_blank' className='px-4 py-2 text-white bg-violet-600 rounded'>
             <i className="ri-download-line"></i>
           </a>
         </div>

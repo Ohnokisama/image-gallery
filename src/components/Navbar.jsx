@@ -1,6 +1,5 @@
 import React,  {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import ImageSearch from './ImageSearch'
 
 const Navbar = () => {
   const [text, setText] = useState('')
@@ -27,7 +26,7 @@ const Navbar = () => {
   window.addEventListener('scroll', pageScroll)
 
   return (
-    <nav id='navBar' className='flex justify-between py-3 px-6 md:px-12 fixed z-10 w-full'>
+    <nav id='navBar' className='flex justify-between py-3 px-6 md:px-12 fixed z-10 w-full transition-all'>
       <Link to='/'>
         <h1 className='text-3xl text-white'>JayPegs</h1>
       </Link>
