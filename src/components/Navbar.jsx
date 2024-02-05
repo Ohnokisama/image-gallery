@@ -1,13 +1,25 @@
 import React,  {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const {user, logOut} = UserAuth()
   const [text, setText] = useState('')
+
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     navigate(`search?query=${text}`)
+  }
+
+  const handleLogout = async () => {
+    try {
+      await logOut()
+      navigate('/')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   function pageScroll() {
@@ -26,7 +38,7 @@ const Navbar = () => {
   window.addEventListener('scroll', pageScroll)
 
   return (
-    <nav id='navBar' className='flex justify-between py-3 px-6 md:px-12 fixed z-10 w-full transition-all'>
+    <nav id='navBar' className='flex justify-between items-center py-3 px-6 md:px-12 fixed z-10 w-full transition-all'>
       <Link to='/'>
         <h1 className='text-3xl text-white'>JayPegs</h1>
       </Link>
@@ -36,12 +48,35 @@ const Navbar = () => {
           <i className="ri-search-line"></i>
         </button>
       </form>
-      <div>
-        <button className='block text-white py-3 px-6 bg-violet-500 rounded'>
-          <i className="ri-user-line"></i>&nbsp;
-          Login
-        </button>
-      </div>
+      {
+        user?.email ?
+        <ul className='flex gap-4 items-center'>
+          <li className='px-2'>
+            <Link to='/my-account' className='text-white'>
+              Account
+            </Link>
+          </li>
+          <li className="px-2">
+            <button className='block text-violet-600 py-3 px-6 bg-white rounded' onClick={() => handleLogout()}>
+              <i className="ri-logout-circle-line font-bold"></i>&nbsp;
+              Logout
+            </button>
+          </li>
+        </ul> :  
+        <ul className='flex gap-4'>
+          <li className="px-2">
+            <Link to='/register' className='text-white'>
+              Register
+            </Link>
+          </li>
+          <li className="px-2">
+            <Link to='/login' className='text-white'>
+              Login
+            </Link>
+          </li>
+        </ul>
+      }
+      
       
     </nav>
   )
