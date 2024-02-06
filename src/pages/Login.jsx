@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { UserAuth } from "../context/AuthContext"
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -9,6 +9,15 @@ function Login() {
   // Authentication functions
   const {user, logIn, signInWithGoogle} = UserAuth()
 
+  // Navigation variable
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(user?.email) {
+      navigate('/')
+    }
+  }, [user?.email])
+
   // Form fields
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,9 +25,6 @@ function Login() {
 
   // Password Visibility
   const [show, setShow] = useState(true)
-
-  // Navigation variable
-  const navigate = useNavigate()
 
   // Form submit function
   const handleSubmit = async (e) => {
@@ -60,12 +66,12 @@ function Login() {
           </div>
           <button type="submit" className='py-4 px-12 bg-violet-600 text-white rounded hover:bg-violet-900 transition-all'>Login</button>
           <p className='my-3'>Or</p>
-          <button type="submit" className='py-2 px-6 bg-white text-violet-600 border-2 border-violet-600 rounded hover:bg-violet-600 hover:text-white transition-all' onClick={() => signInWithGoogle() ? navigate('/'): ''}>
+          <button type="button" className='py-2 px-6 bg-white text-violet-600 border-2 border-violet-600 rounded hover:bg-violet-600 hover:text-white transition-all' onClick={() => signInWithGoogle()}>
             <i className="ri-google-line"></i>&nbsp;
             Login with Google
           </button>
           <p className="my-4">
-            Already have an account? <Link to='/login' className='text-violet-600 font-bold'>Click Here</Link>
+            Already have an account? <Link to='/register' className='text-violet-600 font-bold'>Click Here</Link>
           </p>
         </form>
       </div>
