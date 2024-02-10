@@ -18,7 +18,7 @@ const Search = () => {
     .then(response => {
       setImages(response.data.hits)
       setIsLoading(false)
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch(error => {
       console.log(error);

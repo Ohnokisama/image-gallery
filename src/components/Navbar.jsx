@@ -90,16 +90,7 @@ const Navbar = () => {
         }
         {
           user?.email ?
-          <ul className={`flex flex-col absolute top-14 bg-slate-700 w-full left-0 px-4 ${openMenu ? 'scale-y-1' : 'scale-y-0'}`}>
-            <li className="py-4">
-              <form className='relative w-full md:hidden' onSubmit={handleSubmit}>
-                <input type="text" className='w-full py-2 px-5 rounded-full h-[60px] focus:border-2 focus:border-violet-600 focus:outline-none text-black' placeholder='Search for images...' onChange={(e) => setText(e.target.value)} />
-                <button type="submit" className='absolute right-1 top-[5px] py-auto px-10 h-[50px] rounded-full bg-violet-600 hover:bg-violet-800 text-white'>
-                  <i className="ri-search-line"></i>
-                </button>
-              </form>
-            </li>
-            <hr />
+          <ul className={`flex flex-col absolute top-14 bg-slate-600 w-full left-0 px-4 ${openMenu ? 'scale-x-1' : 'scale-x-0'} transition-all`}>
             <li className='px-2 py-4'>
               <Link to='/my-account' className='text-white'>
                 Account
@@ -112,17 +103,17 @@ const Navbar = () => {
                 Logout
               </button>
             </li>
-          </ul> :  
-          <ul className={`flex flex-col absolute top-14 bg-slate-700 w-full left-0 ${openMenu ? 'scale-y-1' : 'scale-y-0'} px-4`}>
+            <hr />
             <li className="py-4">
               <form className='relative w-full md:hidden' onSubmit={handleSubmit}>
-                <input type="text" className='w-full py-2 px-5 rounded-full h-[60px] focus:border-2 focus:border-violet-600 focus:outline-none text-black' placeholder='Search for images...' onChange={(e) => setText(e.target.value)} />
-                <button type="submit" className='absolute right-1 top-[5px] py-auto px-10 h-[50px] rounded-full bg-violet-600 hover:bg-violet-800 text-white'>
+                <input type="text" className='w-full py-2 px-5 rounded-full h-[46px] focus:border-2 focus:border-violet-600 focus:outline-none text-black' placeholder='Search for images...' onChange={(e) => setText(e.target.value)} />
+                <button type="submit" className='absolute right-1 top-[3px] py-auto px-10 h-[40px] rounded-full bg-violet-600 hover:bg-violet-800 text-white'>
                   <i className="ri-search-line"></i>
                 </button>
               </form>
             </li>
-            <hr />
+          </ul> :  
+          <ul className={`flex flex-col absolute top-14 bg-slate-600 w-full left-0 ${openMenu ? 'scale-x-1' : 'scale-x-0'} px-4 transition-all`}>
             <li className="px-2 py-4">
               <Link to='/register' className='text-white'>
                 Register
@@ -133,6 +124,15 @@ const Navbar = () => {
               <Link to='/login' className='text-white'>
                 Login
               </Link>
+            </li>
+            <hr />
+            <li className="py-4">
+              <form className='relative w-full md:hidden' onSubmit={handleSubmit}>
+                <input type="text" className='w-full py-2 px-5 rounded-full h-[46px] focus:border-2 focus:border-violet-600 focus:outline-none text-black' placeholder='Search for images...' onChange={(e) => setText(e.target.value)} />
+                <button type="submit" className='absolute right-1 top-[3px] py-auto px-10 h-[40px] rounded-full bg-violet-600 hover:bg-violet-800 text-white'>
+                  <i className="ri-search-line"></i>
+                </button>
+              </form>
             </li>
           </ul>
         }

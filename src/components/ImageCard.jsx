@@ -34,7 +34,7 @@ const ImageCard = ({image}) => {
   return (
     <div className="w-full rounded overflow-hidden shadow my-1 group h-[350px] relative mx-auto" key={image?.id}>
       <img src={image?.largeImageURL} alt="" className="w-full h-full object-cover group-hover:scale-125 transition-all" />
-      <div className="absolute w-full h-full top-0 left-0 p-2 md:p-6 bg-black/80 text-white flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-all">
+      <div className="absolute w-full h-full top-0 left-0 p-4 md:p-6 bg-black/80 text-white flex flex-col justify-between opacity-0 group-hover:opacity-100 transition-all">
         <div className="flex justify-between items-center">
           <span>
             <i className="ri-camera-line"></i>
