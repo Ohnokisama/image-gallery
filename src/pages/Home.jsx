@@ -29,7 +29,7 @@ const Home = () => {
           <img src={`${image?.largeImageURL}`} alt="" className='w-full h-full object-cover' />
           <div className="absolute top-[30%] left-0 w-full px-6 md:px-12">
             <div className="w-full md:w-[50%] mx-auto">
-              <h1 className="text-4xl font-medium">Welcome to JayPegs - Royalty free images for personal or professional use.</h1>
+              <h1 className="text-3xl md:text-4xl text-center md:text-left font-medium">Welcome to JayPegs - Royalty free images for personal or professional use.</h1>
               <ImageSearch />
             </div>
             
